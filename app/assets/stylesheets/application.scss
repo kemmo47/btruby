@@ -1,0 +1,44 @@
+.button{
+    background-color: #A4BFC8 !important;
+    color: rgb(255, 255, 255) !important;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px #c1c1c1;
+    font-weight: bold;
+    border: none;
+}
+
+a{
+    text-decoration: none !important;
+    transition: 0.5s all !important;
+}
+
+a:hover{
+    text-decoration: underline !important;
+}
+ 
+h1,h2,h3,h4,h5,h6,a,p,span,b{
+    color: #357C93 !important;
+}
+
+
+.container-entry{
+    display: grid;
+    grid-column-gap: 25px;
+    grid-template-columns: 23% 23% 23% 23%;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.cart-item{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 0;
+}
+
+.navbar{
+    background: #E7E6E4;
+}
+
+.card-body p{
+    margin-bottom: 7px;
+}

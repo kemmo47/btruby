@@ -1,0 +1,42 @@
+<%= form_with(model: entry) do |form| %>
+  <% if entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+        <% entry.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-3">
+    <%= form.label :meal_type, class: "label-control" %>
+    <%= form.text_field :meal_type, class: "form-control", autocomplete: "off" %>
+  </div>
+
+  <div class="my-3">
+    <%= form.label :calories, class: "label-control" %>
+    <%= form.number_field :calories, class: "form-control" %>
+  </div>
+
+  <div class="my-3">
+    <%= form.label :proteins, class: "label-control" %>
+    <%= form.number_field :proteins, class: "form-control" %>
+  </div>
+
+  <div class="my-3">
+    <%= form.label :carbohydrates, class: "label-control" %>
+    <%= form.number_field :carbohydrates, class: "form-control" %>
+  </div>
+
+  <div class="my-3">
+    <%= form.label :fats, class: "label-control" %>
+    <%= form.number_field :fats, class: "form-control" %>
+  </div>
+
+  <div class="my-3">
+    <%= form.submit class: 'button' %>
+  </div>
+<% end %>

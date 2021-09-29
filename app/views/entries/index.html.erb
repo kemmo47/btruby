@@ -1,0 +1,27 @@
+<% content_for :title do %>
+  Foodlog &ndash; <%= DateTime.now.to_s(:nice_date) %>
+<% end %>
+
+<h1 class="my-3">Entries</h1>
+
+<div class="container-entry">
+  <% @entries.each do |entry| %>
+    <div class="cart-item">
+      <div class="card" style="max-width: 18rem;">
+        <div class="card-header text-center"><h5><%= entry.meal_type %></h5></div>
+        <div class="card-body text-primary">
+          <p><b><%= entry.calories %></b> calories</p>
+          <p><b><%= entry.proteins %></b> grams of proteins</p>
+          <p><b><%= entry.carbohydrates %></b> grams of carbohydrates</p>
+          <p><b><%= entry.fats %></b> grams of fats</p>
+          <p>Logged <b><%= time_ago_in_words(entry.created_at) %></b> ago</p>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to 'Show', entry, class: "button" %>
+          <%= link_to 'Edit', edit_entry_path(entry), class: "button" %>
+          <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
