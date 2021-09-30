@@ -1,0 +1,41 @@
+
+    <div class="container-cart my-4">
+        <% @entries.each do |day, entries| %>
+            <div class="my-4">
+                <div class="top-cart text-center">
+                    <p>Entries for <%= day %></p>
+                </div>
+                <div class="total-entry container-entry">
+                    <div class="information-item">
+                        <p>Calories</p>
+                        <span><%= entries.pluck(:calories).sum %></span>
+                    </div>
+                    <div class="information-item">
+                        <p>Proteins</p>
+                        <span><%= entries.pluck(:proteins).sum %>g</span>
+                    </div>
+                    <div class="information-item">
+                        <p>Carbohydrates</p>
+                        <span><%= entries.pluck(:carbohydrates).sum %>g</span>
+                    </div>
+                    <div class="information-item">
+                        <p>Fats</p>
+                        <span><%= entries.pluck(:fats).sum %>g</span>
+                    </div>
+                </div>
+                <div class="body-cart">
+                    <% entries.each do |entry| %>
+                        <%= link_to entry_path(entry) do %>
+                            <div class="item-entry">
+                                <p class="mb-0"><b><%= entry.meal_type %></b></p>
+                                <%= entry.calories %> calories,
+                                <%= entry.proteins %> g protein,
+                                <%= entry.carbohydrates %> g carbs,
+                                <%= entry.fats %> g fat
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
