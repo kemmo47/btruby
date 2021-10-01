@@ -1,0 +1,14 @@
+alert('create success');
+$('#todo_todos_content').val('');
+$('#todo_user_id').val('');
+
+<%# location.reload(); %>
+
+$("#container_todos").append(`<tr id="todos_<%= @todo.id %>">
+                                <td><%= @todo.id %></td>
+                                <td><%= @todo.todos_content %></td>
+                                <td><%= @todo.user_id %></td>
+                                <td><%= link_to 'Destroy', @todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                            </tr>`);
+
+$('#todos_<%= @todo.id %>').hide().fadeIn(650);

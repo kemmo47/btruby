@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h2 class="text-center my-4">Create Todos</h2>
+  <%# create %>
+  <div class="container">
+    <div class="container-50">
+      <%= form_for(@todo, remote: true) do |form| %>
+        <div class="my-3">
+          <%= form.label :todos_content, class:"label-control" %>
+          <%= form.text_field :todos_content, class:"form-control", placeholder:"Add Todos Content...", autocomplete:"off" %>
+        </div>
+        <div class="my-3">
+          <%= form.label :user_id, class:"label-control" %>
+          <%= form.number_field :user_id, class:"form-control", placeholder:"Add User ID..." %>
+        </div>
+        <div class="my-3">
+          <%= form.submit class:"button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%# create %>
+
+  <%# show todos %>
+  <div class="container">
+    <%= render 'todos', todos: @todos %>
+  </div>
+  <%# show todos %>
+
+<%# <%= link_to 'New Todo', new_todo_path %>

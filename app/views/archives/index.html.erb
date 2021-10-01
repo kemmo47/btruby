@@ -1,26 +1,32 @@
 
     <div class="container-cart my-4">
+    <%= a = 0; puts a %>
         <% @entries.each do |day, entries| %>
+        <%= a = a + 1;  puts a %>
             <div class="my-4">
                 <div class="top-cart text-center">
                     <p>Entries for <%= day %></p>
                 </div>
-                <div class="total-entry container-entry">
+                <div class="total-entry container-entry" id="my_entry_daily<%= a %>">
                     <div class="information-item">
                         <p>Calories</p>
-                        <span><%= entries.pluck(:calories).sum %></span>
+                        <dl class="content_calories"><%= entries.pluck(:calories).sum %></dl>
+                        <span><3000</span>
                     </div>
                     <div class="information-item">
                         <p>Proteins</p>
-                        <span><%= entries.pluck(:proteins).sum %>g</span>
+                        <dl class="content_proteins"><%= entries.pluck(:proteins).sum %>g</dl>
+                        <span><56g</span>
                     </div>
                     <div class="information-item">
                         <p>Carbohydrates</p>
-                        <span><%= entries.pluck(:carbohydrates).sum %>g</span>
+                        <dl class="content_carbohydrates"><%= entries.pluck(:carbohydrates).sum %>g</dl>
+                        <span>130g<|<300g</span>
                     </div>
                     <div class="information-item">
                         <p>Fats</p>
-                        <span><%= entries.pluck(:fats).sum %>g</span>
+                        <dl class="content_fats"><%= entries.pluck(:fats).sum %>g</dl>
+                        <span><60g</span>
                     </div>
                 </div>
                 <div class="body-cart">
