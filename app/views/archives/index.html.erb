@@ -1,47 +1,46 @@
-
-    <div class="container-cart my-4">
-    <%= a = 0; puts a %>
-        <% @entries.each do |day, entries| %>
-        <%= a = a + 1;  puts a %>
-            <div class="my-4">
-                <div class="top-cart text-center">
-                    <p>Entries for <%= day %></p>
+<div class="container-cart my-4">
+<%= a = 0; puts a %>
+    <% @entries.each do |day, entries| %>
+    <%= a = a + 1;  puts a %>
+        <div class="my-4">
+            <div class="top-cart text-center">
+                <p>Entries for <%= day %></p>
+            </div>
+            <div class="total-entry container-entry" id="my_entry_daily<%= a %>">
+                <div class="information-item">
+                    <p>Calories</p>
+                    <dl class="content_calories"><%= entries.pluck(:calories).sum %></dl>
+                    <span><3000</span>
                 </div>
-                <div class="total-entry container-entry" id="my_entry_daily<%= a %>">
-                    <div class="information-item">
-                        <p>Calories</p>
-                        <dl class="content_calories"><%= entries.pluck(:calories).sum %></dl>
-                        <span><3000</span>
-                    </div>
-                    <div class="information-item">
-                        <p>Proteins</p>
-                        <dl class="content_proteins"><%= entries.pluck(:proteins).sum %>g</dl>
-                        <span><56g</span>
-                    </div>
-                    <div class="information-item">
-                        <p>Carbohydrates</p>
-                        <dl class="content_carbohydrates"><%= entries.pluck(:carbohydrates).sum %>g</dl>
-                        <span>130g<|<300g</span>
-                    </div>
-                    <div class="information-item">
-                        <p>Fats</p>
-                        <dl class="content_fats"><%= entries.pluck(:fats).sum %>g</dl>
-                        <span><60g</span>
-                    </div>
+                <div class="information-item">
+                    <p>Proteins</p>
+                    <dl class="content_proteins"><%= entries.pluck(:proteins).sum %>g</dl>
+                    <span><56g</span>
                 </div>
-                <div class="body-cart">
-                    <% entries.each do |entry| %>
-                        <%= link_to entry_path(entry) do %>
-                            <div class="item-entry">
-                                <p class="mb-0"><b><%= entry.meal_type %></b></p>
-                                <%= entry.calories %> calories,
-                                <%= entry.proteins %> g protein,
-                                <%= entry.carbohydrates %> g carbs,
-                                <%= entry.fats %> g fat
-                            </div>
-                        <% end %>
-                    <% end %>
+                <div class="information-item">
+                    <p>Carbohydrates</p>
+                    <dl class="content_carbohydrates"><%= entries.pluck(:carbohydrates).sum %>g</dl>
+                    <span>130g<|<300g</span>
+                </div>
+                <div class="information-item">
+                    <p>Fats</p>
+                    <dl class="content_fats"><%= entries.pluck(:fats).sum %>g</dl>
+                    <span><60g</span>
                 </div>
             </div>
-        <% end %>
-    </div>
+            <div class="body-cart">
+                <% entries.each do |entry| %>
+                    <%= link_to entry_path(entry) do %>
+                        <div class="item-entry">
+                            <p class="mb-0"><b><%= entry.meal_type %></b></p>
+                            <%= entry.calories %> calories,
+                            <%= entry.proteins %> g protein,
+                            <%= entry.carbohydrates %> g carbs,
+                            <%= entry.fats %> g fat
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>
