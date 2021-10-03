@@ -2,6 +2,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>id</th>
                 <th>Content</th>
                 <th>User</th>
@@ -11,13 +12,22 @@
         <tbody id="container_todos">
             <% @todos.each do |todo| %>
                 <tr id="todos_<%= todo.id %>">
+                    <td><input type="checkbox" class="form-check-input" onclick="checkeduser(<%= todo.id %>)" id="check_todos_<%= todo.id %>"></td>
                     <td><%= todo.id %></td>
-                    <td><%= todo.todos_content %></td>
-                    <td><%= todo.user_id %></td>
-                    <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' },
-                    class:'button btn-danger', remote: true %></td>
+                    <td id="todos_content_<%= todo.id %>"><%= todo.todos_content %></td>
+                    <td><%= todo.user.email %></td>
+                    <td>
+                        <% if todo.user == current_user %>
+                            <%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' },
+                            class:'button btn-danger', remote: true %>
+                        <% else %>
+                            <%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' },
+                            class:'button btn-danger disabled',disabled: :true, remote: true %>
+                        <% end %>
+                    </td>
                 </tr>
             <% end %>
         </tbody>
     </table>
 </div>
+

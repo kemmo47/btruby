@@ -1,3 +1,4 @@
 $('#todos_<%= @todo.id %>').fadeOut(650, function(){
     $(this).remove();
 });
+toastr.error('Delete success','<%= @todo.todos_content %>', {timeOut: 1500});
