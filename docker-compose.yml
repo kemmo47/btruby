@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+  nginx:
+    build:
+      context: docker/nginx
+      dockerfile: Dockerfile
+      args:
+        - SERVER_NAME_ARG=localhost
+        - IS_DEVELOPMENT=true
+    depends_on:
+      - app
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - .env
+
+  app:
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    volumes:
+      - .:/foodlog
+    command: sh /scripts/command.sh
+    stdin_open: true
+    tty: true
+
+volumes:
+  mysql_data:
+  bundle_data:
